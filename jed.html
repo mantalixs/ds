@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labubu Shop | Колекційні монстрики THE MONSTERS</title>
+    <style>
+        :root {
+            --bg-color: #ebf3ff;
+            --text-title: #7fa9ff;
+            --text-price: #5a54f0;
+            --card-bg: #ffffff;
+            --btn-bg: #2d3436;
+            --btn-text: #ffffff;
+            --badge-stock: #ffb6c1; /* Світло-рожевий */
+            --badge-pop: #ffadd2; /* Трохи насиченіший рожевий */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Hero section - Заголовок */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-title);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Контейнер для карток */
+        .product-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        /* Картка товару */
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Зображення товару */
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        /* Бейдж (В наявності / Популярне) */
+        .badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-stock { background-color: var(--badge-stock); }
+        .badge-pop { background-color: var(--badge-pop); }
+
+        /* Текстовий блок товару */
+        .product-details {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product-details h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Ціна */
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-price);
+            margin-bottom: 25px;
+        }
+
+        /* Кнопка */
+        .add-to-cart-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #000;
+            transform: scale(1.03);
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Проста JS-анімація для кнопки */
+        .added {
+            background-color: #4cd137 !important;
+        }
+
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Твій новий пухнастий друг</h1>
+    <p>Колекційні іграшки THE MONSTERS від Pop Mart</p>
+</section>
+
+<main class="product-container">
+    <div class="product-card">
+        <span class="badge badge-stock">В наявності</span>
+        <img src="https://cdn.27.ua/sc--media--prod/default/a7/48/13/a748139d-01cc-4a54-afa3-811ee668965f.jpeg" alt="Labubu Koko Blue" class="product-image">
+        <div class="product-details">
+            <h2>Labubu Koko Blue</h2>
+            <p>М'який брелок з лімітованої серії</p>
+        </div>
+        <div class="price">1 200 ₴</div>
+        <button class="add-to-cart-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+
+    <div class="product-card">
+        <span class="badge badge-pop">Популярне</span>
+        <img src="https://slastic.com/content/images/37/530x536l50nn0/miaka-ihrashka-labubu-pop-mart-the-monsters-labubu-coca-cola-secret-oryhinallimitovana-kolektsiia-1sht-87386295813878.png" alt="Labubu Candy Dream" class="product-image">
+        <div class="product-details">
+            <h2>Labubu Candy Dream</h2>
+            <p>Ексклюзивний градієнтний дизайн</p>
+        </div>
+        <div class="price">1 450 ₴</div>
+        <button class="add-to-cart-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+</main>
+
+<script>
+    function addToCart(button) {
+        // Змінюємо текст і стиль кнопки
+        const originalText = button.innerText;
+        button.innerText = 'Додано!';
+        button.classList.add('added');
+        button.disabled = true; // Вимикаємо кнопку, щоб не клікали двічі
+
+        // Повертаємо все назад через 1.5 секунди
+        setTimeout(() => {
+            button.innerText = originalText;
+            button.classList.remove('added');
+            button.disabled = false;
+        }, 1500);
+
+        // Тут можна додати логіку додавання в реальний кошик
+        console.log('Товар додано в кошик!');
+    }
+</script>
+</body>
+</html>
